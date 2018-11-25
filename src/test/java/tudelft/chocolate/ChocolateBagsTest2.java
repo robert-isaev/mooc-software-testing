@@ -18,7 +18,7 @@ public class ChocolateBagsTest2 {
             "4,2,3,3", "3,2,3,3", "2,2,3,-1", "1,2,3,-1"
     })
     public void testAlgorithm(int small, int big, int total, int expectedResult) {
-        int result = new ChocolateBags().calculate(small, big, total);
+        int result = new ChocolateBags().calculateSmallBars(small, big, total);
         Assertions.assertEquals(expectedResult, result);
     }
 
