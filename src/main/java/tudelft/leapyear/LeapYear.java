@@ -3,10 +3,28 @@ package tudelft.leapyear;
 public class LeapYear {
 
     public boolean isLeapYear(int year) {
-        if ( year % 400 == 0)
+
+        if(this.isDivisibleByFour(year) && this.isDivisibleByHundred(year) && this.isDivisibleByFourHundred((year))) {
             return true;
-        if ( year % 100 == 0)
+
+        } else if (this.isDivisibleByFour(year) && ! this.isDivisibleByHundred(year)) {
+            return true;
+
+        } else {
             return false;
-        return  ( year % 4 == 0 ) ? true : false;
+        }
     }
+
+    private boolean isDivisibleByFour(int year) {
+        return year % 4 == 0;
+    }
+
+    private boolean isDivisibleByHundred(int year) {
+        return year % 100 == 0;
+    }
+
+    private boolean isDivisibleByFourHundred(int year) {
+        return year % 400 == 0;
+    }
+
 }
