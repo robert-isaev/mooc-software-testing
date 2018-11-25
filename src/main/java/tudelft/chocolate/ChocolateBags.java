@@ -1,16 +1,21 @@
 package tudelft.chocolate;
 
 public class ChocolateBags {
+    private static int kilosInSmallBar = 1;
+    private static int kilosInBigBar = 5;
 
     public int calculate(int small, int big, int total) {
-        int maxBigBoxes = total / 5;
-        int bigBoxesWeCanUse = maxBigBoxes < big ? maxBigBoxes : big;
-        total -= (bigBoxesWeCanUse * 5);
 
-        if(small < total)
+        if (total > packageFitInKilos(small, big)) {
             return -1;
-        return total;
+        } else {
+            return total % kilosInBigBar;
+        }
 
+    }
+
+    private int packageFitInKilos(int small, int big) {
+        return (small * kilosInSmallBar + big * kilosInBigBar);
     }
 
 }
