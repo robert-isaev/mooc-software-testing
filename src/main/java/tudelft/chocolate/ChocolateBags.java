@@ -6,7 +6,7 @@ public class ChocolateBags {
 
     public int calculateSmallBars(int small, int big, int total) {
 
-        if (total > packageFitInKilos(small, big)) {
+        if (! willPackageFit(small, big, total)) {
             return -1;
         } else {
             return total % kilosInBigBar;
@@ -14,8 +14,18 @@ public class ChocolateBags {
 
     }
 
-    private int packageFitInKilos(int small, int big) {
-        return (small * kilosInSmallBar + big * kilosInBigBar);
+    private boolean willPackageFit(int small, int big, int total) {
+
+        if (total % kilosInBigBar > small) {
+            return false;
+
+        } else if (total < kilosInBigBar) {
+            return total <= small;
+
+        } else {
+            return total <= ((small * kilosInSmallBar) + (big * kilosInBigBar));
+        }
+
     }
 
 }
